@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -21,6 +20,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -42,4 +42,20 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    /**
+     * Get the data_orang_tua record associated with the user.
+     */
+    public function dataOrangTua()
+    {
+        return $this->hasOne(DataOrangTua::class, 'user_id');
+    }
+    public function dataPribadi()
+    {
+        return $this->hasOne(DataPribadi::class, 'user_id');
+    }
+    public function dataPendukung()
+    {
+        return $this->hasOne(DataPendukung::class, 'user_id');
+    }
 }
