@@ -2,17 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DataOrangTua;
-use App\Models\DataPendukung;
+use App\Models\User;
 use App\Models\DataPribadi;
+use App\Models\DataOrangTua;
 use Illuminate\Http\Request;
+use App\Models\DataPendukung;
+use App\Models\ProfileSekolah;
 use Illuminate\Support\Facades\Auth;
 
 class PesertaController extends Controller
 {
     public function dashboard()
     {
-        return view('peserta.dashboard');
+        $profile = ProfileSekolah::first();
+        $count = User::where('role', 'peserta')->count();
+        return view('peserta.dashboard', compact('count', 'profile'));
     }
     public function dataPribadi()
     {

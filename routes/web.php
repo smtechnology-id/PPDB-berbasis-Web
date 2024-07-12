@@ -29,6 +29,14 @@ Route::post('/registerPost', [AuthController::class, 'registerPost'])->name('reg
 // Dashboard routes
 Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/dataPeserta', [AdminController::class, 'dataPeserta'])->name('admin.dataPeserta');
+    Route::get('/admin/downloadRekap', [AdminController::class, 'downloadRekap'])->name('admin.downloadRekap');
+    Route::get('/admin/exportRekap', [AdminController::class, 'exportRekap'])->name('admin.exportRekap');
+    Route::get('/admin/detailPendaftaran/{id}', [AdminController::class, 'detailPendaftaran'])->name('admin.detailPendaftaran');
+    Route::get('/admin/downloadSingle/{id}', [AdminController::class, 'downloadSingle'])->name('admin.downloadSingle');
+    Route::get('/admin/profileSekolah', [AdminController::class, 'profileSekolah'])->name('admin.profileSekolah');
+    Route::post('/admin/addProfileSekolah', [AdminController::class, 'addProfileSekolah'])->name('admin.addProfileSekolah');
+    Route::post('/admin/updateProfileSekolah', [AdminController::class, 'updateProfileSekolah'])->name('admin.updateProfileSekolah');
 });
 
 Route::middleware(['auth', 'pimpinan'])->group(function () {
@@ -36,6 +44,8 @@ Route::middleware(['auth', 'pimpinan'])->group(function () {
     Route::get('/pimpinan/dataPeserta', [PimpinanController::class, 'dataPeserta'])->name('pimpinan.dataPeserta');
     Route::get('/pimpinan/downloadRekap', [PimpinanController::class, 'downloadRekap'])->name('pimpinan.downloadRekap');
     Route::get('/pimpinan/exportRekap', [PimpinanController::class, 'exportRekap'])->name('pimpinan.exportRekap');
+    Route::get('/pimpinan/detailPendaftaran/{id}', [PimpinanController::class, 'detailPendaftaran'])->name('pimpinan.detailPendaftaran');
+    Route::get('/pimpinan/downloadSingle/{id}', [PimpinanController::class, 'downloadSingle'])->name('pimpinan.downloadSingle');
 });
 
 Route::middleware(['auth', 'peserta'])->group(function () {

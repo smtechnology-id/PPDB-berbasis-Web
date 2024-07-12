@@ -29,7 +29,7 @@
                     <div class="card overflow-hidden">
                         <div class="row g-0">
                             <div class="col-lg-6 d-none d-lg-block p-2">
-                                <img src="{{ asset('assets/images/sekolah-ilustrasi-freepik.jpg') }}" alt=""
+                                <img src="{{ asset('assets/images/logo-yapendik.png') }}" alt=""
                                     class="img-fluid rounded h-100" style="object-fit: cover">
                             </div>
                             <div class="col-lg-6">

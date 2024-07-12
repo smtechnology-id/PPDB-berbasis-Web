@@ -3,11 +3,10 @@
 
 @section('content')
     <div class="row">
-        <h3>Data Peserta Pendaftaran Siswa Baru</h3>
-        <p>Data Seluruh Peserta Pendaftaran Siswa Baru</p>
+        <h3 class="text-center">Data Peserta Pendaftaran Siswa Baru</h3>
+        <p class="text-center">Data Seluruh Peserta Pendaftaran Siswa Baru</p>
         <hr>
         <div class="table-responsive">
-            <a href="{{ route('pimpinan.exportRekap') }}" class="btn btn-primary my-2">Download Rekap</a>
             <table class="table table-borderless">
                 <thead>
                     <tr>
@@ -16,7 +15,6 @@
                         <th>JK</th>
                         <th>TTL</th>
                         <th>Alamat</th>
-                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,10 +33,12 @@
                                     <span class="text-danger">Belum diisi</span>
                                 @endif
                             </td>
-                            <td>{!! $data->dataPribadi->alamat ?? '<span class="text-danger">Belum diisi</span>' !!}</td>
                             <td>
-                                <a href="{{ route('pimpinan.downloadSingle', ['id' => $data->id]) }}" class="btn btn-outline-primary">Download</a>
-                                <a href="{{ route('pimpinan.detailPendaftaran', ['id' => $data->id]) }}" class="btn btn-outline-success">Detail</a>
+                                @if (isset($data->dataPribadi->alamat))
+                                    {{ $data->dataPribadi->alamat . ', RT ' . $data->dataPribadi->rt . ', RW ' . $data->dataPribadi->rw . ', ' . $data->dataPribadi->kelurahan . ', ' . $data->dataPribadi->kecamatan . ', ' . $data->dataPribadi->kode_pos }}
+                                @else
+                                    <span class="text-danger">Belum diisi</span>
+                                @endif
                             </td>
                         </tr>
                     @endforeach

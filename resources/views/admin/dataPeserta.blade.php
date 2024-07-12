@@ -37,8 +37,8 @@
                             </td>
                             <td>{!! $data->dataPribadi->alamat ?? '<span class="text-danger">Belum diisi</span>' !!}</td>
                             <td>
-                                <a href="{{ route('pimpinan.downloadSingle', ['id' => $data->id]) }}" class="btn btn-outline-primary">Download</a>
-                                <a href="{{ route('pimpinan.detailPendaftaran', ['id' => $data->id]) }}" class="btn btn-outline-success">Detail</a>
+                                <a href="{{ route('admin.downloadSingle', ['id' => $data->id]) }}" class="btn btn-outline-primary">Download</a>
+                                <a href="{{ route('admin.detailPendaftaran', ['id' => $data->id]) }}" class="btn btn-outline-success">Detail</a>
                             </td>
                         </tr>
                     @endforeach

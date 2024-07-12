@@ -108,6 +108,18 @@
                                 <i class="ri-home-3-line"></i>
                                 <span> Dashboard </span>
                             </a>
+                            <li class="side-nav-item">
+                                <a href="{{ route('admin.profileSekolah') }}" class="side-nav-link">
+                                    <i class=" ri-building-fill"></i>
+                                    <span> Profile Sekolah </span>
+                                </a>
+                            </li>
+                            <li class="side-nav-item">
+                                <a href="{{ route('admin.dataPeserta') }}" class="side-nav-link">
+                                    <i class="ri-parent-fill"></i>
+                                    <span> Data Peserta </span>
+                                </a>
+                            </li>
                         </li>
                     @elseif (Auth::user()->role == 'pimpinan')
                         <li class="side-nav-item">
@@ -144,7 +156,7 @@
                         <li class="side-nav-item">
                             <a href="{{ route('peserta.dataOrangTua') }}" class="side-nav-link">
                                 <i class="ri-parent-fill"></i>
-                                <span> Data Pendukung </span>
+                                <span> Data Orang Tua </span>
                             </a>
                         </li>
                     @endif
@@ -218,7 +230,7 @@
                         <div class="col-12 text-center">
                             <script>
                                 document.write(new Date().getFullYear())
-                            </script> Developed With Love By SMTechnology.id</b>
+                            </script> YAYASAN PENDIDIKAN KRISTEN GPIB “BETLEHEM” SUNGAI AMBAWANG</b>
                         </div>
                     </div>
                 </div>
