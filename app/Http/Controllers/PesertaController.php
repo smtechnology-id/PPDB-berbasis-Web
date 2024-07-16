@@ -303,6 +303,11 @@ class PesertaController extends Controller
         return redirect()->route('peserta.dataOrangTua')
             ->with('success', 'Data orang tua berhasil diperbarui.');
     }
+    public function downloadSingle($id)
+    {
+        $data = User::where('id', $id)->first();
+        return view('peserta.downloadSingle', compact('data'));
+    }
 
     
 }

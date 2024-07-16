@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Exports\PesertaDataExport;
+use App\Models\DataOrangTua;
+use App\Models\DataPendukung;
+use App\Models\DataPribadi;
 use App\Models\ProfileSekolah;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -97,5 +100,27 @@ class AdminController extends Controller
         $sekolah->save();
 
         return redirect()->back()->with('success', 'Data sekolah berhasil diperbarui.');
+    }
+    public function deletePeserta($id)
+    {
+        $peserta = User::find($id);
+        $dataOrangTua = DataOrangTua::where('user_id', $id)->first();
+        $dataPribadi = DataPribadi::where('user_id', $id)->first();
+        $dataPendukung = DataPendukung::where('user_id', $id)->first();
+
+
+        if ($peserta) {
+            $peserta->delete();
+        }
+        if ($dataOrangTua) {
+            $dataOrangTua->delete();
+        }
+        if ($dataPribadi) {
+            $dataPribadi->delete();
+        }
+        if ($dataPendukung) {
+            $dataPendukung->delete();
+        }
+        return redirect()->route('admin.dataPeserta')->with('success', 'Data peserta berhasil dihapus.');
     }
 }

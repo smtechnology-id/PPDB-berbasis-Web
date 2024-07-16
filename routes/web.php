@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 // Login
 Route::get('/', [AuthController::class, 'index'])->name('index');
+
 Route::post('/loginPost', [AuthController::class, 'loginPost'])->name('loginPost');
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
@@ -37,6 +38,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/profileSekolah', [AdminController::class, 'profileSekolah'])->name('admin.profileSekolah');
     Route::post('/admin/addProfileSekolah', [AdminController::class, 'addProfileSekolah'])->name('admin.addProfileSekolah');
     Route::post('/admin/updateProfileSekolah', [AdminController::class, 'updateProfileSekolah'])->name('admin.updateProfileSekolah');
+    Route::get('/admin/deletePeserta/{id}', [AdminController::class, 'deletePeserta'])->name('admin.deletePeserta');
 });
 
 Route::middleware(['auth', 'pimpinan'])->group(function () {
@@ -62,4 +64,6 @@ Route::middleware(['auth', 'peserta'])->group(function () {
     Route::get('/peserta/dataOrangTua', [PesertaController::class, 'dataOrangTua'])->name('peserta.dataOrangTua');
     Route::post('/peserta/addDataOrangTua', [PesertaController::class, 'addDataOrangTua'])->name('peserta.addDataOrangTua');
     Route::post('/peserta/updateDataOrangTua', [PesertaController::class, 'updateDataOrangTua'])->name('peserta.updateDataOrangTua');
+    Route::get('/peserta/downloadSingle/{id}', [PesertaController::class, 'downloadSingle'])->name('peserta.downloadSingle');
+
 });

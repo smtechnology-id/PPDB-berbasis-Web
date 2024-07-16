@@ -7,7 +7,7 @@
         <p>Data Seluruh Peserta Pendaftaran Siswa Baru</p>
         <hr>
         <div class="table-responsive">
-            <a href="{{ route('pimpinan.exportRekap') }}" class="btn btn-primary my-2">Download Rekap</a>
+            <a href="{{ route('admin.exportRekap') }}" class="btn btn-primary my-2">Download Rekap</a>
             <table class="table table-borderless">
                 <thead>
                     <tr>
@@ -39,6 +39,7 @@
                             <td>
                                 <a href="{{ route('admin.downloadSingle', ['id' => $data->id]) }}" class="btn btn-outline-primary">Download</a>
                                 <a href="{{ route('admin.detailPendaftaran', ['id' => $data->id]) }}" class="btn btn-outline-success">Detail</a>
+                                <a href="{{ route('admin.deletePeserta', ['id' => $data->id]) }}" class="btn btn-outline-danger">Delete</a>
                             </td>
                         </tr>
                     @endforeach
