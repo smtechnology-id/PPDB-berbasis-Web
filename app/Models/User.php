@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -57,5 +58,22 @@ class User extends Authenticatable
     public function dataPendukung()
     {
         return $this->hasOne(DataPendukung::class, 'user_id');
+    }
+
+    public function hasPaid()
+    {
+        // Logika untuk memeriksa apakah pengguna telah melakukan pembayaran
+        return $this->payments()->where('status', 'confirmed')->exists();
+    }
+
+    public function paymentConfirmed()
+    {
+        // Logika untuk memeriksa apakah pembayaran pengguna telah dikonfirmasi
+        return $this->payments()->where('status', 'confirmed')->exists();
+    }
+
+    public function payments()
+    {
+        return $this->hasMany(Payment::class, 'user_id');
     }
 }

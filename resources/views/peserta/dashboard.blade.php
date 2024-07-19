@@ -36,10 +36,11 @@
     </div>
     <div class="row">
         <ul class="list-group">
-            <li class="list-group-item">1. Isi Biodata</li>
-            <li class="list-group-item">2. Isi Data Orang Tua</li>
-            <li class="list-group-item">3. Isi Data Pendukung</li>
-            <li class="list-group-item">4. Setelah Semua Data Terisi Cetak Formulir Pendaftaran</li>
+            <li class="list-group-item">1. Lengkapi Form Pembayaran</li>
+            <li class="list-group-item">2. Isi Biodata</li>
+            <li class="list-group-item">3. Isi Data Orang Tua</li>
+            <li class="list-group-item">4. Isi Data Pendukung</li>
+            <li class="list-group-item">5. Setelah Semua Data Terisi Cetak Formulir Pendaftaran</li>
         </ul>
         <a href="{{ route('peserta.downloadSingle',['id' => Auth::user()->id]) }}" class="btn btn-sm btn-primary my-2" style="max-width: 200px">Download</a>
     </div>

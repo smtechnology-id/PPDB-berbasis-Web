@@ -39,6 +39,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/admin/addProfileSekolah', [AdminController::class, 'addProfileSekolah'])->name('admin.addProfileSekolah');
     Route::post('/admin/updateProfileSekolah', [AdminController::class, 'updateProfileSekolah'])->name('admin.updateProfileSekolah');
     Route::get('/admin/deletePeserta/{id}', [AdminController::class, 'deletePeserta'])->name('admin.deletePeserta');
+
+    Route::get('/admin/payment', [AdminController::class, 'payment'])->name('admin.payment');
+    Route::get('/admin/tolakPembayaran/{id}', [AdminController::class, 'tolakPembayaran'])->name('admin.tolakPembayaran');
+    Route::get('/admin/konfirmasiPembayaran/{id}', [AdminController::class, 'konfirmasiPembayaran'])->name('admin.konfirmasiPembayaran');
 });
 
 Route::middleware(['auth', 'pimpinan'])->group(function () {
@@ -48,6 +52,7 @@ Route::middleware(['auth', 'pimpinan'])->group(function () {
     Route::get('/pimpinan/exportRekap', [PimpinanController::class, 'exportRekap'])->name('pimpinan.exportRekap');
     Route::get('/pimpinan/detailPendaftaran/{id}', [PimpinanController::class, 'detailPendaftaran'])->name('pimpinan.detailPendaftaran');
     Route::get('/pimpinan/downloadSingle/{id}', [PimpinanController::class, 'downloadSingle'])->name('pimpinan.downloadSingle');
+    Route::get('/pimpinan/payment', [PimpinanController::class, 'payment'])->name('pimpinan.payment');
 });
 
 Route::middleware(['auth', 'peserta'])->group(function () {
@@ -66,4 +71,8 @@ Route::middleware(['auth', 'peserta'])->group(function () {
     Route::post('/peserta/updateDataOrangTua', [PesertaController::class, 'updateDataOrangTua'])->name('peserta.updateDataOrangTua');
     Route::get('/peserta/downloadSingle/{id}', [PesertaController::class, 'downloadSingle'])->name('peserta.downloadSingle');
 
+    Route::get('/peserta/paymentPeserta', [PesertaController::class, 'paymentPeserta'])->name('peserta.paymentPeserta');
+    Route::post('/peserta/addPaymentPeserta', [PesertaController::class, 'addPaymentPeserta'])->name('peserta.addPayment');
+    Route::post('/peserta/updatePaymentPeserta', [PesertaController::class, 'updatePaymentPeserta'])->name('peserta.updatePaymentPeserta');
+    Route::post('/peserta/reuploadPayment', [PesertaController::class, 'reuploadPayment'])->name('peserta.reuploadPayment');
 });

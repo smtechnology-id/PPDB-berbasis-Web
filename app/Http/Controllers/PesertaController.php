@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Payment;
 use App\Models\DataPribadi;
 use App\Models\DataOrangTua;
 use Illuminate\Http\Request;
@@ -309,5 +310,56 @@ class PesertaController extends Controller
         return view('peserta.downloadSingle', compact('data'));
     }
 
+    public function paymentPeserta()
+    {
+        $payments = Payment::where('user_id', Auth::id())->first();
+        return view('peserta.paymentPeserta', compact('payments'));
+    }
+    public function addPaymentPeserta(Request $request)
+    {
+        // Validasi input
+        $validatedData = $request->validate([
+            'sekolah_tujuan' => 'required|string',
+            'jumlah_pembayaran' => 'required|numeric',
+            'bukti_pembayaran' => 'required|file|mimes:jpeg,png,jpg,pdf|max:2048',
+            'status' => 'required|string',
+            'tanggal' => 'required|date',
+            'metode_pembayaran' => 'required|string',
+            'keterangan' => 'nullable|string',
+        ]);
+
+        // Upload file bukti pembayaran
+        if ($request->hasFile('bukti_pembayaran')) {
+            $validatedData['bukti_pembayaran'] = $request->file('bukti_pembayaran')->store('bukti_pembayaran', 'public');
+        }
+
+        // Simpan data pembayaran ke dalam database
+        $payment = new Payment($validatedData);
+        $payment->user_id = auth()->id(); // Mengambil ID user yang sedang login
+        $payment->save();
+
+        return redirect()->route('peserta.paymentPeserta')->with('success', 'Payment berhasil disimpan.');
+    }
+    public function reuploadPayment(Request $request)
+    {
+        $payment = Payment::find($request->id);
+
+        // Validasi input
+        $validatedData = $request->validate([
+            'bukti_pembayaran' => 'nullable|file|mimes:jpeg,png,jpg,pdf|max:2048',
+        ]);
+
+        // Upload file bukti pembayaran jika ada
+        if ($request->hasFile('bukti_pembayaran')) {
+            $validatedData['bukti_pembayaran'] = $request->file('bukti_pembayaran')->store('bukti_pembayaran', 'public');
+            $payment->bukti_pembayaran = $validatedData['bukti_pembayaran'];
+        }
+
+        $payment->status = 'pending';
+        $payment->save();
+
+        return redirect()->route('peserta.paymentPeserta')->with('success', 'Payment berhasil disimpan.');
+    }
+    
     
 }

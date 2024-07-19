@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@if(Auth::user()->hasPaid() && Auth::user()->paymentConfirmed())
     <div class="row">
         <h3 class="mt-3">Pengisian Data Pribadi</h3>
         <p>Silahkan Lengkapi Data Pribadi Anda Pada Form DIbawah Ini, Pastikan Semua Kolom Terisi</p>
@@ -216,4 +217,9 @@
             @endif
         </div>
     </div>
+@else
+    <div class="alert alert-danger">
+        Anda belum melakukan pembayaran atau pembayaran Anda belum dikonfirmasi oleh admin.
+    </div>
+@endif
 @endsection

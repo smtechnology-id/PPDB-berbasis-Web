@@ -115,6 +115,12 @@
                                 </a>
                             </li>
                             <li class="side-nav-item">
+                                <a href="{{ route('admin.payment') }}" class="side-nav-link">
+                                    <i class="ri-money-dollar-circle-fill"></i>
+                                    <span> Pembayaran </span>
+                                </a>
+                            </li>
+                            <li class="side-nav-item">
                                 <a href="{{ route('admin.dataPeserta') }}" class="side-nav-link">
                                     <i class="ri-parent-fill"></i>
                                     <span> Data Peserta </span>
@@ -134,11 +140,23 @@
                                 <span> Data Peserta </span>
                             </a>
                         </li>
+                        <li class="side-nav-item">
+                            <a href="{{ route('pimpinan.payment') }}" class="side-nav-link">
+                                <i class="ri-money-dollar-circle-fill"></i>
+                                <span> Rekap Pembayaran </span>
+                            </a>
+                        </li>
                     @elseif (Auth::user()->role == 'peserta')
                         <li class="side-nav-item">
                             <a href="{{ route('peserta.dashboard') }}" class="side-nav-link">
                                 <i class="ri-home-3-line"></i>
                                 <span> Dashboard </span>
+                            </a>
+                        </li>
+                        <li class="side-nav-item">
+                            <a href="{{ route('peserta.paymentPeserta') }}" class="side-nav-link">
+                                <i class="ri-money-dollar-circle-fill"></i>
+                                <span> Pembayaran </span>
                             </a>
                         </li>
                         <li class="side-nav-item">
@@ -244,6 +262,7 @@
         <!-- ============================================================== -->
 
     </div>
+    @yield('scripts')
     <script>
         CKEDITOR.replace('content_berita');
     </script>

@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
-use Illuminate\Http\Request;
-use App\Exports\PesertaDataExport;
-use App\Models\DataOrangTua;
-use App\Models\DataPendukung;
+use App\Models\Payment;
 use App\Models\DataPribadi;
+use App\Models\DataOrangTua;
+use Illuminate\Http\Request;
+use App\Models\DataPendukung;
 use App\Models\ProfileSekolah;
+use App\Exports\PesertaDataExport;
 use Maatwebsite\Excel\Facades\Excel;
 
 class AdminController extends Controller
@@ -122,5 +123,25 @@ class AdminController extends Controller
             $dataPendukung->delete();
         }
         return redirect()->route('admin.dataPeserta')->with('success', 'Data peserta berhasil dihapus.');
+    }
+    public function payment()
+    {
+        $data = Payment::all();
+        return view('admin.payment', compact('data'));
+    }
+    public function tolakPembayaran($id)
+    {
+        $payment = Payment::find($id);
+        $payment->status = 'rejected';
+        $payment->save();
+        return redirect()->back()->with('success', 'Pembayaran berhasil ditolak.');
+    }
+
+    public function konfirmasiPembayaran($id)
+    {
+        $payment = Payment::find($id);
+        $payment->status = 'confirmed';
+        $payment->save();
+        return redirect()->back()->with('success', 'Pembayaran berhasil dikonfirmasi.');
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 use App\Models\ProfileSekolah;
 use App\Exports\PesertaDataExport;
@@ -55,5 +56,13 @@ class PimpinanController extends Controller
         $data = User::orderBy('created_at', 'desc')->first();
 
         return view('pimpinan.downloadSingle', compact('data'));
+    }
+    public function payment()
+    {
+        $data = Payment::with('user')->get();
+        $totalPembayaran = $data->where('status', 'confirmed')->sum('jumlah_pembayaran');
+        $jumlahSiswa = $data->count();
+
+        return view('pimpinan.payment', compact('data', 'totalPembayaran', 'jumlahSiswa'));
     }
 }
