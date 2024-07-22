@@ -6,16 +6,16 @@
         <h3>Data Pembayaran Pendaftaran Siswa Baru</h3>
         <p>Data Seluruh Pembayaran Pendaftaran Siswa Baru</p>
         <hr>
-        
+
         <div class="table-responsive">
-            <a href="{{ route('admin.exportRekap') }}" class="btn btn-primary my-2">Download Rekap</a>
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>No</th>
                         <th>Nama Siswa</th>
                         <th>Sekolah Tujuan</th>
-                        <th>Status Pembayaran</th>
+                        <th>Status </th>
+                        <th>Download Bukti Pembayaran</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -35,8 +35,14 @@
                                 @endif
                             </td>
                             <td>
-                                <a href="{{ route('admin.tolakPembayaran', ['id' => $item->id]) }}" class="btn btn-danger">Tolak</a>
-                                <a href="{{ route('admin.konfirmasiPembayaran', ['id' => $item->id]) }}" class="btn btn-outline-success">Konfirmasi</a>
+                                <a href="{{ asset('storage/' . $item->bukti_pembayaran) }}"
+                                    class="btn btn-primary">Download</a>
+                            </td>
+                            <td>
+                                <a href="{{ route('admin.tolakPembayaran', ['id' => $item->id]) }}"
+                                    class="btn btn-danger">Tolak</a>
+                                <a href="{{ route('admin.konfirmasiPembayaran', ['id' => $item->id]) }}"
+                                    class="btn btn-outline-success">Konfirmasi</a>
                             </td>
                         </tr>
                     @endforeach
