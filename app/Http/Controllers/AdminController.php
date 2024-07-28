@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Payment;
+use App\Models\Pengumuman;
 use App\Models\DataPribadi;
 use App\Models\DataOrangTua;
 use Illuminate\Http\Request;
@@ -144,4 +145,34 @@ class AdminController extends Controller
         $payment->save();
         return redirect()->back()->with('success', 'Pembayaran berhasil dikonfirmasi.');
     }
+    public function pengumuman()
+    {
+        $data = Pengumuman::all();
+        return view('admin.pengumuman', compact('data'));
+    }
+    public function addPengumuman()
+    {
+        return view('admin.addPengumuman');
+    }
+    public function addPengumumanPost(Request $request)
+    {
+        $validatedData = $request->validate([
+            'judul' => 'required|string|max:255',
+            'isi' => 'required|string',
+        ]);
+        Pengumuman::create($validatedData);
+        return redirect()->route('admin.pengumuman')->with('success', 'Pengumuman berhasil ditambahkan.');
+    }
+    public function detailPengumuman($id)
+    {
+        $data = Pengumuman::find($id);
+        return view('admin.detailPengumuman', compact('data'));
+    }
+    public function deletePengumuman($id)
+    {
+        $pengumuman = Pengumuman::find($id);
+        $pengumuman->delete();
+        return redirect()->route('admin.pengumuman')->with('success', 'Pengumuman berhasil dihapus.');
+    }
+
 }

@@ -65,4 +65,9 @@ class PimpinanController extends Controller
 
         return view('pimpinan.payment', compact('data', 'totalPembayaran', 'jumlahSiswa'));
     }
+    public function rekapPayment()
+    {
+        $data = Payment::with('user')->get();
+        return view('pimpinan.rekapPayment', compact('data'));
+    }
 }

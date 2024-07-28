@@ -35,6 +35,7 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Filter</button>
             </form>
+            <a href="{{ route('pimpinan.rekapPayment') }}" target="_blank" class="btn btn-secondary my-2">Unduh PDF</a>
             <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -43,6 +44,7 @@
                         <th>Sekolah Tujuan</th>
                         <th>Jumlah Bayar</th>
                         <th>Status Pembayaran</th>
+                        <th>Tanggal</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -63,6 +65,7 @@
                                         <span class="btn btn-outline-danger">{{ $item->status }}</span>
                                     @endif
                                 </td>
+                                <td>{{ \Carbon\Carbon::parse($item->tanggal)->format('H:i:s d-m-Y') }}</td>
                             </tr>
                         @endif
                     @endforeach

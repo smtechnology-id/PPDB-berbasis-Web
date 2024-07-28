@@ -21,6 +21,23 @@
                         <button class="btn btn-primary btn-block" onclick="copyToClipboard()">Salin Informasi</button>
                     </div>
                 </div>
+                
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0">Rincian </h4>
+                    </div>
+                    <div class="card-body">
+                        <ul>
+                            <li>Seragam Batik</li>
+                            <li>Seragam Olahraga</li>
+                            <li>Sepatu</li>
+                            <li>Buku Pelajaran</li>
+                            <li>Uang Gedung</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             @if ($payments)
                 @if ($payments->status == 'pending')
@@ -37,20 +54,7 @@
                                 <a target="_blank" href="{{ asset('storage/' . $payments->bukti_pembayaran) }}"
                                     class="btn btn-warning">Bukti Pembayaran</a>
                             </div>
-                            <div class="card">
-                                <div class="card-header bg-primary text-white">
-                                    <h4 class="mb-0">Rincian </h4>
-                                </div>
-                                <div class="card-body">
-                                    <ul>
-                                        <li>Seragam Batik</li>
-                                        <li>Seragam Olahraga</li>
-                                        <li>Sepatu</li>
-                                        <li>Buku Pelajaran</li>
-                                        <li>Uang Gedung</li>
-                                    </ul>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 @elseif($payments->status == 'confirmed')

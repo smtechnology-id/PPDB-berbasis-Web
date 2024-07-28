@@ -63,8 +63,21 @@
                 <ul class="topbar-menu d-flex align-items-center gap-3">
 
 
-
-
+                    @if (Auth::user()->role == 'peserta')
+                    <li class="dropdown">
+                        <a class="nav-link dropdown-toggle arrow-none" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                            <i style="font-size: 26px;" class=" ri-notification-3-line"></i>
+                            <span class="badge bg-danger rounded-circle"><span class="badge bg-danger rounded-circle">{{ $announcementCount }}</span></span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-animated">
+                            @foreach ($announcements as $announcement)
+                                <a href="{{ route('peserta.detailPengumuman', ['id' => $announcement->id]) }}" class="dropdown-item">
+                                    <i class="fas fa-envelope mr-2"></i> {{ $announcement->judul }}
+                                </a>
+                            @endforeach
+                            </div>
+                        </li>
+                    @endif
                     <li class="dropdown">
                         <a class="nav-link dropdown-toggle arrow-none nav-user" data-bs-toggle="dropdown" href="#"
                             role="button" aria-haspopup="false" aria-expanded="false">
@@ -124,6 +137,12 @@
                                 <a href="{{ route('admin.dataPeserta') }}" class="side-nav-link">
                                     <i class="ri-parent-fill"></i>
                                     <span> Data Peserta </span>
+                                </a>
+                            </li>
+                            <li class="side-nav-item">
+                                <a href="{{ route('admin.pengumuman') }}" class="side-nav-link">
+                                    <i class="ri-parent-fill"></i>
+                                    <span> Pengumuman </span>
                                 </a>
                             </li>
                         </li>
@@ -248,7 +267,7 @@
                         <div class="col-12 text-center">
                             <script>
                                 document.write(new Date().getFullYear())
-                            </script> YAYASAN PENDIDIKAN KRISTEN GPIB “BETLEHEM” SUNGAI AMBAWANG</b>
+                            </script> YAYASAN PENDIDIKAN KRISTEN GPIB "BETLEHEM" SUNGAI AMBAWANG</b>
                         </div>
                     </div>
                 </div>

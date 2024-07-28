@@ -43,6 +43,12 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/payment', [AdminController::class, 'payment'])->name('admin.payment');
     Route::get('/admin/tolakPembayaran/{id}', [AdminController::class, 'tolakPembayaran'])->name('admin.tolakPembayaran');
     Route::get('/admin/konfirmasiPembayaran/{id}', [AdminController::class, 'konfirmasiPembayaran'])->name('admin.konfirmasiPembayaran');
+
+    Route::get('/admin/pengumuman', [AdminController::class, 'pengumuman'])->name('admin.pengumuman');
+    Route::get('/admin/addPengumuman', [AdminController::class, 'addPengumuman'])->name('admin.addPengumuman');
+    Route::post('/admin/addPengumumanPost', [AdminController::class, 'addPengumumanPost'])->name('admin.addPengumumanPost');
+    Route::get('/admin/detailPengumuman/{id}', [AdminController::class, 'detailPengumuman'])->name('admin.detailPengumuman');
+    Route::get('/admin/deletePengumuman/{id}', [AdminController::class, 'deletePengumuman'])->name('admin.deletePengumuman');
 });
 
 Route::middleware(['auth', 'pimpinan'])->group(function () {
@@ -53,6 +59,7 @@ Route::middleware(['auth', 'pimpinan'])->group(function () {
     Route::get('/pimpinan/detailPendaftaran/{id}', [PimpinanController::class, 'detailPendaftaran'])->name('pimpinan.detailPendaftaran');
     Route::get('/pimpinan/downloadSingle/{id}', [PimpinanController::class, 'downloadSingle'])->name('pimpinan.downloadSingle');
     Route::get('/pimpinan/payment', [PimpinanController::class, 'payment'])->name('pimpinan.payment');
+    Route::get('/pimpinan/rekapPayment', [PimpinanController::class, 'rekapPayment'])->name('pimpinan.rekapPayment');
 });
 
 Route::middleware(['auth', 'peserta'])->group(function () {
@@ -75,4 +82,5 @@ Route::middleware(['auth', 'peserta'])->group(function () {
     Route::post('/peserta/addPaymentPeserta', [PesertaController::class, 'addPaymentPeserta'])->name('peserta.addPayment');
     Route::post('/peserta/updatePaymentPeserta', [PesertaController::class, 'updatePaymentPeserta'])->name('peserta.updatePaymentPeserta');
     Route::post('/peserta/reuploadPayment', [PesertaController::class, 'reuploadPayment'])->name('peserta.reuploadPayment');
+    Route::get('/peserta/detailPengumuman/{id}', [PesertaController::class, 'detailPengumuman'])->name('peserta.detailPengumuman');
 });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Payment;
+use App\Models\Pengumuman;
 use App\Models\DataPribadi;
 use App\Models\DataOrangTua;
 use Illuminate\Http\Request;
@@ -13,11 +14,26 @@ use Illuminate\Support\Facades\Auth;
 
 class PesertaController extends Controller
 {
+    protected $announcementCount;
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->announcementCount = $this->getAnnouncementCount();
+        view()->share('announcements', Pengumuman::all());
+    }
+
+    private function getAnnouncementCount()
+    {
+        return Pengumuman::count();
+    }
+
     public function dashboard()
     {
         $profile = ProfileSekolah::first();
         $count = User::where('role', 'peserta')->count();
-        return view('peserta.dashboard', compact('count', 'profile'));
+        $announcementCount = $this->announcementCount;
+        return view('peserta.dashboard', compact('count', 'profile', 'announcementCount'));
     }
     public function dataPribadi()
     {
@@ -359,6 +375,11 @@ class PesertaController extends Controller
         $payment->save();
 
         return redirect()->route('peserta.paymentPeserta')->with('success', 'Payment berhasil disimpan.');
+    }
+    public function detailPengumuman($id)
+    {
+        $data = Pengumuman::find($id);
+        return view('peserta.detailPengumuman', compact('data'));
     }
     
     
