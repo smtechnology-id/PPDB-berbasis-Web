@@ -54,9 +54,9 @@
                             <td><input type="text" name="kewarganegaraan" id="kewarganegaraan" value="{{ $dataPribadi->kewarganegaraan }}" required class="form-control"></td>
                         </tr>
                         <tr>
-                            <td>Berkebutuhan Khusus</td>
+                            <td>Berkebutuhan Khusus <span class="text-danger">*</span></td>
                             <td>:</td>
-                            <td><input type="text" name="berkebutuhan_khusus" id="berkebutuhan_khusus" value="{{ $dataPribadi->berkebutuhan_khusus }}" class="form-control"></td>
+                            <td><input type="text" name="berkebutuhan_khusus" id="berkebutuhan_khusus" value="{{ $dataPribadi->berkebutuhan_khusus }}" required class="form-control"></td>
                         </tr>
                         <tr>
                             <td>Alamat <span class="text-danger">*</span></td>
@@ -74,9 +74,9 @@
                             <td><input type="text" name="rw" id="rw" value="{{ $dataPribadi->rw }}" required class="form-control"></td>
                         </tr>
                         <tr>
-                            <td>Dusun</td>
+                            <td>Dusun <span class="text-danger">*</span></td>
                             <td>:</td>
-                            <td><input type="text" name="dusun" id="dusun" value="{{ $dataPribadi->dusun }}" class="form-control"></td>
+                            <td><input type="text" name="dusun" id="dusun" value="{{ $dataPribadi->dusun }}" required class="form-control"></td>
                         </tr>
                         <tr>
                             <td>Kelurahan <span class="text-danger">*</span></td>
@@ -157,9 +157,9 @@
                             <td><input type="text" name="kewarganegaraan" id="kewarganegaraan" required class="form-control"></td>
                         </tr>
                         <tr>
-                            <td>Berkebutuhan Khusus</td>
+                            <td>Berkebutuhan Khusus <span class="text-danger">*</span></td>
                             <td>:</td>
-                            <td><input type="text" name="berkebutuhan_khusus" id="berkebutuhan_khusus" class="form-control"></td>
+                            <td><input type="text" name="berkebutuhan_khusus" id="berkebutuhan_khusus" required class="form-control"></td>
                         </tr>
                         <tr>
                             <td>Alamat <span class="text-danger">*</span></td>
@@ -177,9 +177,9 @@
                             <td><input type="text" name="rw" id="rw" required class="form-control"></td>
                         </tr>
                         <tr>
-                            <td>Dusun</td>
+                            <td>Dusun <span class="text-danger">*</span></td>
                             <td>:</td>
-                            <td><input type="text" name="dusun" id="dusun" class="form-control"></td>
+                            <td><input type="text" name="dusun" id="dusun" required class="form-control"></td>
                         </tr>
                         <tr>
                             <td>Kelurahan <span class="text-danger">*</span></td>

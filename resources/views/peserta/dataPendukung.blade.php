@@ -144,50 +144,50 @@
                         <tr>
                             <td>Lingkar Kepala</td>
                             <td>:</td>
-                            <td><input type="number" name="lingkar_kepala" id="lingkar_kepala" class="form-control">
+                            <td><input type="number" name="lingkar_kepala" id="lingkar_kepala" required class="form-control">
                             </td>
                         </tr>
                         <tr>
                             <td>Jarak Tempuh</td>
                             <td>:</td>
-                            <td><input type="text" name="jarak_tempuh" id="jarak_tempuh" class="form-control"></td>
+                            <td><input type="text" name="jarak_tempuh" id="jarak_tempuh" required class="form-control"></td>
                         </tr>
                         <tr>
                             <td>Waktu Tempuh</td>
                             <td>:</td>
-                            <td><input type="text" name="waktu_tempuh" id="waktu_tempuh" class="form-control"></td>
+                            <td><input type="text" name="waktu_tempuh" id="waktu_tempuh" required class="form-control"></td>
                         </tr>
                         <tr>
                             <td>Jumlah Saudara</td>
                             <td>:</td>
-                            <td><input type="number" name="jumlah_saudara" id="jumlah_saudara" class="form-control">
+                            <td><input type="number" name="jumlah_saudara" id="jumlah_saudara" required class="form-control">
                             </td>
                         </tr>
                         <tr>
                             <td>Berkas Passfoto</td>
                             <td>:</td>
-                            <td><input type="file" name="berkas_passfoto" id="berkas_passfoto" class="form-control">
+                            <td><input type="file" name="berkas_passfoto" id="berkas_passfoto" required class="form-control">
                             </td>
                         </tr>
                         <tr>
                             <td>Berkas Akte</td>
                             <td>:</td>
-                            <td><input type="file" name="berkas_akte" id="berkas_akte" class="form-control"></td>
+                            <td><input type="file" name="berkas_akte" id="berkas_akte" required class="form-control"></td>
                         </tr>
                         <tr>
                             <td>Berkas KK</td>
                             <td>:</td>
-                            <td><input type="file" name="berkas_kk" id="berkas_kk" class="form-control"></td>
+                            <td><input type="file" name="berkas_kk" id="berkas_kk" required class="form-control"></td>
                         </tr>
                         <tr>
                             <td>KTP Ayah</td>
                             <td>:</td>
-                            <td><input type="file" name="ktp_ayah" id="ktp_ayah" class="form-control"></td>
+                            <td><input type="file" name="ktp_ayah" id="ktp_ayah" required class="form-control"></td>
                         </tr>
                         <tr>
                             <td>KTP Ibu</td>
                             <td>:</td>
-                            <td><input type="file" name="ktp_ibu" id="ktp_ibu" class="form-control"></td>
+                            <td><input type="file" name="ktp_ibu" id="ktp_ibu" required class="form-control"></td>
                         </tr>
                     </table>
                     <button type="submit" class="btn btn-primary">Simpan</button>
