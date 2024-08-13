@@ -47,8 +47,7 @@ class PimpinanController extends Controller
 
     public function detailPendaftaran($id)
     {
-        $data = User::orderBy('created_at', 'desc')->first();
-
+        $data = User::orderBy('created_at', 'desc')->where('id', $id)->first();
         return view('pimpinan.detailPendaftaran', compact('data'));
     }
     public function downloadSingle($id)
